@@ -1,4 +1,5 @@
-//+build !debug
+//go:build !debug
+// +build !debug
 
 package http2_util
 
@@ -24,7 +25,8 @@ func NewServer(bindAddr string, preMasterSecretLogPath string, handler http.Hand
 
 	h2Server := &http2.Server{
 		// TODO: extends the idle time after re-use openapi client
-		IdleTimeout: 1 * time.Millisecond,
+		//IdleTimeout: 1 * time.Millisecond,
+		IdleTimeout: 10 * time.Second,
 	}
 	server = &http.Server{
 		Addr:    bindAddr,
